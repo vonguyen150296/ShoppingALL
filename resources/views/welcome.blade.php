@@ -1,96 +1,104 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.index')
 
-        <title>Laravel</title>
+@section('content')
+@include('layouts.slide')
+<div class="container">
+		<div id="content" class="space-top-none">
+			<div class="main-content">
+				<div class="space60">&nbsp;</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="beta-products-list">
+							<h4>Les nouveaux produits</h4>
+							<div class="beta-products-details">
+								<p class="pull-left">{{count($new_product)}} produits trouvés</p>
+								<div class="clearfix"></div>
+							</div>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
+							<div class="row">
+								@foreach($new_product as $n)
+								<div class="col-sm-3" style="margin-bottom: 20px">
+									<div class="single-item">
+										@if($n->promotion_price != 0)
+										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
+										@endif
+										<div class="single-item-header">
+											<a href="./product/{{$n->id}}"><img src="./image/product/{{$n->image}}" alt="" width="270px" height="300px"></a>
+										</div>
+										<div class="single-item-body">
+											<p class="single-item-title">{{$n->name}}</p>
+											<p class="single-item-price">
+												@if($n->promotion_price != 0)
+												<span class="flash-del">{{$n->unit_price}}€</span>
+												<span class="flash-sale">{{$n->promotion_price}}€</span>
+												@else
+												<span>${{$n->unit_price}}</span>
+												@endif
+											</p>
+										</div>
+										<div class="single-item-caption">
+											<a class="add-to-cart pull-left" href="{{route('add-to-cart',$n->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											<a class="beta-btn primary" href="./product/{{$n->id}}">Details <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+								@endforeach
+							</div>
+						</div> <!-- .beta-products-list -->
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+						<div class="beta-products-list">
+							<h4>Les promotions</h4>
+							<div class="beta-products-details">
+								<p class="pull-left">{{count($promo)}} produits trouvés</p>
+								<div class="clearfix"></div>
+							</div>
+							<div class="row">
+								@foreach($promo as $p)
+								<div class="col-sm-3" style="margin-bottom: 20px">
+									<div class="single-item">
+										<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 
-            .full-height {
-                height: 100vh;
-            }
+										<div class="single-item-header">
+											<a href="./product/{{$p->id}}"><img src="./image/product/{{$p->image}}" alt="" width="270px" height="300px"></a>
+										</div>
+										<div class="single-item-body">
+											<p class="single-item-title">{{$p->name}}</p>
+											<p class="single-item-price">
+												<span class="flash-del">{{$p->unit_price}}€</span>
+												<span class="flash-sale">{{$p->promotion_price}}€</span>
+											</p>
+										</div>
+										<div class="single-item-caption">
+											<a class="add-to-cart pull-left" href="{{route('add-to-cart',$p->id)}}"><i class="fa fa-shopping-cart"></i></a>
+											<a class="beta-btn primary" href="./product/{{$p->id}}">Details <i class="fa fa-chevron-right"></i></a>
+											<div class="clearfix"></div>
+										</div>
+									</div>
+								</div>
+								@endforeach
+							</div>
+						</div> <!-- .beta-products-list -->
+						<div class="row text-center">{{$promo->links()}}</div>
+					</div>
+				</div> <!-- end section with sidebar and main content -->
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
 
-            .position-ref {
-                position: relative;
-            }
+			</div> <!-- .main-content -->
+		</div> <!-- #content -->
+	</div><!-- .container -->
+@endsection
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+@section('javascript')
+<script>
+	$(document).ready(function($) {    
+		$(window).scroll(function(){
+			if($(this).scrollTop()>150){
+			$(".header-bottom").addClass('fixNav')
+			}else{
+				$(".header-bottom").removeClass('fixNav')
+			}}
+		)
+	})
+</script>
+@endsection
