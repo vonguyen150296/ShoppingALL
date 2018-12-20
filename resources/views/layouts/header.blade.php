@@ -9,9 +9,9 @@
 				</div>
 				<div class="pull-right auto-width-right">
 					<ul class="top-details menu-beta l-inline">
-						<li><a href="#"><i class="fa fa-user"></i>Mon compte</a></li>
-						<li><a href="#">S'inscire</a></li>
-						<li><a href="#">Se connecter</a></li>
+						<li><a href="{{route('myaccount')}}"><i class="fa fa-user"></i>Mon compte</a></li>
+						<li><a href="{{route('signup')}}">S'inscire</a></li>
+						<li><a href="{{route('login')}}">Se connecter</a></li>
 					</ul>
 				</div>
 				<div class="clearfix"></div>
