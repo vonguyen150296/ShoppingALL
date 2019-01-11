@@ -13,7 +13,7 @@ class BillDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('bill_table', function (Blueprint $table) {
+        Schema::create('bill_detail', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('id_bill');
             $table->foreign('id_bill')->references('id')->on('bills')->onDelete('cascade');

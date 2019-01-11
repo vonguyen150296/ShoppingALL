@@ -1,0 +1,71 @@
+*{
+	box-sizing: border-box;
+ 	font-family: Arial, Helvetica, sans-serif;
+}
+
+.head {
+	height: 70px;
+	background:#172431;
+}
+
+.head-text {
+	padding :25px;
+	color: #7b8fa3;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.head a{
+	color: #7b8fa3;
+	text-decoration: none;
+}
+
+.body {
+	margin: 10px 20px;
+	padding: 20px 0;
+	min-height: 500px;
+}
+
+/* menu */
+
+.vertical-menu {
+  width: 100%; /* Set a width if you like */
+}
+
+.vertical-menu a {
+  background-color: #eee; /* Grey background color */
+  color: black; /* Black text color */
+  display: block; /* Make the links appear below each other */
+  padding: 12px; /* Add some padding */
+  text-decoration: none; /* Remove underline from links */
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc; /* Dark grey background on mouse-over */
+}
+
+.vertical-menu a.active {
+  background-color: #4CAF50; /* Add a green color to the "active/current" link */
+  color: white;
+}
+
+/* Content page */
+.content {
+	border: solid 1px #a1a1a1;
+	min-height: 460px;
+	padding: 15px;
+}
+
+.content-title {
+	font-size: 23px;
+	color: #9f9f9f;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+
+/* FOOTER */
+.footer {
+	background:#172431;
+	color:#7b8fa3;
+	padding:40px 0 50px
+}

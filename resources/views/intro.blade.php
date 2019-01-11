@@ -22,7 +22,7 @@
 						<div> 
 							<div class="row">
 							<div class="col-sm-5">
-								<img src="{{asset('image/history.jpg')}}" alt="">
+								<img src="{{asset('image/insa-cvl.jpg')}}" alt="">
 							</div>
 							<div class="col-sm-7">
 								<h5 class="other-title">CAMPUS BLOIS</h5>
@@ -40,7 +40,7 @@
 						<div> 
 							<div class="row">
 							<div class="col-sm-5">
-								<img src="{{asset('image/history.jpg')}}" alt="">
+								<img src="{{asset('image/insa-cvl.jpg')}}" alt="">
 							</div>
 							<div class="col-sm-7">
 								<h5 class="other-title">CAMPUS BLOIS</h5>
@@ -58,7 +58,7 @@
 						<div> 
 							<div class="row">
 							<div class="col-sm-5">
-								<img src="{{asset('image/history.jpg')}}" alt="">
+								<img src="{{asset('image/insa-cvl.jpg')}}" alt="">
 							</div>
 							<div class="col-sm-7">
 								<h5 class="other-title">CAMPUS BLOIS</h5>
@@ -76,7 +76,7 @@
 						<div> 
 							<div class="row">
 							<div class="col-sm-5">
-								<img src="{{asset('image/history.jpg')}}" alt="">
+								<img src="{{asset('image/insa-cvl.jpg')}}" alt="">
 							</div>
 							<div class="col-sm-7">
 								<h5 class="other-title">CAMPUS BLOIS</h5>
@@ -94,7 +94,7 @@
 						<div> 
 							<div class="row">
 							<div class="col-sm-5">
-								<img src="{{asset('image/history.jpg')}}" alt="">
+								<img src="{{asset('image/insa-cvl.jpg')}}" alt="">
 							</div>
 							<div class="col-sm-7">
 								<h5 class="other-title">CAMPUS BLOIS</h5>
@@ -112,7 +112,7 @@
 						<div> 
 							<div class="row">
 							<div class="col-sm-5">
-								<img src="{{asset('image/history.jpg')}}" alt="">
+								<img src="{{asset('image/insa-cvl.jpg')}}" alt="">
 							</div>
 							<div class="col-sm-7">
 								<h5 class="other-title">CAMPUS BLOIS</h5>
@@ -130,7 +130,7 @@
 						<div> 
 							<div class="row">
 							<div class="col-sm-5">
-								<img src="{{asset('image/history.jpg')}}" alt="">
+								<img src="{{asset('image/insa-cvl.jpg')}}" alt="">
 							</div>
 							<div class="col-sm-7">
 								<h5 class="other-title">CAMPUS BLOIS</h5>

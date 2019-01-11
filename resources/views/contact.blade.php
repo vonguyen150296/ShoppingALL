@@ -9,19 +9,23 @@
 				<div class="col-sm-8">
 					<h2>La forme de contact</h2>
 					<div class="space20">&nbsp;</div>
+					@if(isset($success))
+					<div class="text-warning">{{$success}}</div>
+					@endif
 					<div class="space20">&nbsp;</div>
-					<form action="#" method="post" class="contact-form">	
+					<form action="{{route('post-contact')}}" method="post" class="contact-form">
+					@csrf	
 						<div class="form-block">
-							<input name="your-name" type="text" placeholder="Votre nom *">
+							<input name="name" type="text" placeholder="Votre nom *" required>
 						</div>
 						<div class="form-block">
-							<input name="your-email" type="email" placeholder="Votre email *">
+							<input name="email" type="email" placeholder="Votre email *" required>
 						</div>
 						<div class="form-block">
-							<input name="your-subject" type="text" placeholder="Le subjet *">
+							<input name="subject" type="text" placeholder="Le subjet *" required>
 						</div>
 						<div class="form-block">
-							<textarea name="your-message" placeholder="Votre message *"></textarea>
+							<textarea name="message" placeholder="Votre message *" required></textarea>
 						</div>
 						<div class="form-block">
 							<button type="submit" class="beta-btn primary">Envoyer message <i class="fa fa-chevron-right"></i></button>

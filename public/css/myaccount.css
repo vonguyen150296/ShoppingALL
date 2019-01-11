@@ -94,6 +94,7 @@ input {
 	margin: 30px;
 	padding: 10px;
 	font-size: 13px;
+	min-height: 390px;
 }
 
 .title-page {
@@ -102,6 +103,17 @@ input {
 	font-weight: bold;
 }
 
+.icon{
+	font-size: 20px;
+}
+
+.carte-credit {
+	border: solid 1px #ccc;
+	padding: 10px;
+	margin: 10px;
+	width: 95%;
+	background-color: #afafaf;
+}
 /* FOOTER */
 #footer {
 background:#172431;

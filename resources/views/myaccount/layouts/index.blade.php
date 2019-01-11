@@ -49,5 +49,7 @@
 	</div>
 
 	<!--Script-->
+	<script type="text/javascript" src="{{asset('js/myaccount.js')}}"></script>
+	
 </body>
 </html>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Products_Model;
 use App\Type_Products_Model;
 use App\Cart;
+use App\Code_Promo_Model;
 use Session;
 
 class Product_Controller extends Controller
@@ -44,11 +45,42 @@ class Product_Controller extends Controller
     	return redirect()->back();
     }
 
-    public function delete_by_one($id){ //remove one product of item
+    public function add_to_cart_multi(Request $req, $id, $quantity){ //add one product in cart
+        $product = Products_Model::find($id);
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->add_multi($product, $id, $quantity);
+        $req->Session('cart')->put('cart',$cart);
+    }
 
+    public function delete_by_one($id){ //remove one product of item
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->reduceByOne($id);
+        Session::put('cart',$cart);
+        return redirect()->back();
     }
 
     public function delete_item($id){ //remove one item with quality > 1
-
+        $oldCart = Session('cart')?Session::get('cart'):null;
+        $cart = new Cart($oldCart);
+        $cart->removeItem($id);
+        Session::put('cart',$cart);
+        return redirect()->back();
     }
+
+    public function code_promo(){
+        $code = Code_Promo_Model::where('code',$_POST['coupon'])->get()->first();
+        if(!empty($code)){
+            $oldCart = Session('cart')?Session::get('cart'):null;
+            $cart = new Cart($oldCart);
+            $cart->coupon($code->value);
+            Session::put('cart',$cart);
+            $value = ($code->value)*100;
+            $noti = "Code bon, vous obtenez ".$value."% de réduction";
+        }else{
+            $noti = "Code n'est pas correct!";
+        }
+        return $noti;
+    } 
 }

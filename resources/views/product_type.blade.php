@@ -31,11 +31,11 @@
 										<div class="single-item-body">
 											<p class="single-item-title">{{$p->name}}</p>
 											<p class="single-item-price">
-												<span>${{$p->unit_price}}</span>
+												<span>{{$p->unit_price}}€</span>
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
+											<a class="add-to-cart pull-left" href="{{route('add-to-cart',$p->id)}}"><i class="fa fa-shopping-cart"></i></a>
 											<a class="beta-btn primary" href="../product/{{$p->id}}">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>
@@ -67,15 +67,15 @@
 											<p class="single-item-title">{{$p->name}}</p>
 											<p class="single-item-price">
 												@if($p->promotion_price != 0)
-												<span class="flash-del">${{$p->unit_price}}</span>
-												<span class="flash-sale">${{$p->promotion_price}}</span>
+												<span class="flash-del">{{$p->unit_price}}€</span>
+												<span class="flash-sale">{{$p->promotion_price}}€</span>
 												@else
-												<span>${{$p->unit_price}}</span>
+												<span>{{$p->unit_price}}€</span>
 												@endif
 											</p>
 										</div>
 										<div class="single-item-caption">
-											<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
+											<a class="add-to-cart pull-left" href="{{route('add-to-cart',$p->id)}}"><i class="fa fa-shopping-cart"></i></a>
 											<a class="beta-btn primary" href="../product/{{$p->id}}">Details <i class="fa fa-chevron-right"></i></a>
 											<div class="clearfix"></div>
 										</div>

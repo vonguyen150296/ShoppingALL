@@ -27,4 +27,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function carte_credit(){
+        return $this->hasMany('App\Carte_Credit_Model', 'id_user', 'id');
+    }
 }

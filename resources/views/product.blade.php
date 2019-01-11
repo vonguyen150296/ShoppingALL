@@ -36,31 +36,15 @@
 
 							<p>Options:</p>
 							<div class="single-item-options">
-								<select class="wc-select" name="size">
-									<option>Size</option>
-									<option value="XS">XS</option>
-									<option value="S">S</option>
-									<option value="M">M</option>
-									<option value="L">L</option>
-									<option value="XL">XL</option>
-								</select>
-								<select class="wc-select" name="color">
-									<option>Color</option>
-									<option value="Red">Red</option>
-									<option value="Green">Green</option>
-									<option value="Yellow">Yellow</option>
-									<option value="Black">Black</option>
-									<option value="White">White</option>
-								</select>
-								<select class="wc-select" name="color">
-									<option>Qty</option>
+								<select class="wc-select" name="qty" id="qty">
+									<option value="1">Qty</option>
 									<option value="1">1</option>
 									<option value="2">2</option>
 									<option value="3">3</option>
 									<option value="4">4</option>
 									<option value="5">5</option>
 								</select>
-								<a class="add-to-cart" href="#"><i class="fa fa-shopping-cart"></i></a>
+								<a class="add-to-cart" onclick="add_multi({{$product->id}})" ><i class="fa fa-shopping-cart"></i></a>
 								<div class="clearfix"></div>
 							</div>
 						</div>
@@ -110,7 +94,7 @@
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="product.html"><i class="fa fa-shopping-cart"></i></a>
+										<a class="add-to-cart pull-left" href="{{route('add-to-cart',$r->id)}}"><i class="fa fa-shopping-cart"></i></a>
 										<a class="beta-btn primary" href="../product/{{$r->id}}">Details <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
@@ -143,4 +127,19 @@
 			</div>
 		</div> <!-- #content -->
 	</div> <!-- .container -->
+
+	<script type="text/javascript">
+		function add_multi(id){
+			var item = document.getElementById('qty');
+			var quantity = item.value;
+			var xhttp = new XMLHttpRequest();
+			xhttp.onreadystatechange = function() {
+			    if (this.readyState == 4 && this.status == 200) {
+			      location.reload();
+			    }
+			};
+			xhttp.open("GET", "../add-to-cart-multi/"+id+'/'+quantity, true);
+			xhttp.send();
+		}
+	</script>
 @endsection

@@ -4,7 +4,6 @@
 				<div class="col-sm-3">
 					<div class="widget">
 						<h4 class="widget-title">Instagram</h4>
-						<div id="beta-instagram-feed"><div></div></div>
 					</div>
 				</div>
 				<div class="col-sm-2">
@@ -37,9 +36,9 @@
 				<div class="col-sm-3">
 					<div class="widget">
 						<h4 class="widget-title">Newsletter Souscrire</h4>
-						<form action="#" method="post">
+						<form action="" method="post">
 							<input type="email" name="your_email">
-							<button class="pull-right" type="submit">Souscrire <i class="fa fa-chevron-right"></i></button>
+							<button class="pull-right" type="submit" disabled>Souscrire <i class="fa fa-chevron-right"></i></button>
 						</form>
 					</div>
 				</div>
@@ -63,7 +62,8 @@
 	<script  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<!-- include js files -->
 	<script src="{{ asset('js/jquery.js') }}"></script>
-	<script src="{{ asset('assets/dest/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js') }}"></script>
+	<script src="{{ asset('js/slide.js') }}"></script>
+	<script src="{{ asset('js/vendors/jqueryui/jquery-ui-1.10.4.custom.min.js') }}"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 	<script src="{{ asset('js/vendors/bxslider/jquery.bxslider.min.js') }}"></script>
 	<script src="{{ asset('js/vendors/colorbox/jquery.colorbox-min.js') }}"></script>

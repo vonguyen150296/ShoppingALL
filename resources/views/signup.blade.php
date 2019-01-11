@@ -4,44 +4,55 @@
 <div class="container">
 		<div id="content">
 			
-			<form action="#" method="post" class="beta-form-checkout">
+			<form action="{{route('post-signup')}}" method="post" class="beta-form-checkout">
+				@csrf
 				<div class="row">
 					<div class="col-sm-3"></div>
 					<div class="col-sm-6">
-						<h4>Đăng kí</h4>
+						<h4>Enregistrer</h4>
 						<div class="space20">&nbsp;</div>
 
-						
 						<div class="form-block">
-							<label for="email">Email address*</label>
-							<input type="email" id="email" required>
+							<label for="your_last_name">Nom*</label>
+							<input type="text" name="name" required>
 						</div>
 
 						<div class="form-block">
-							<label for="your_last_name">Fullname*</label>
-							<input type="text" id="your_last_name" required>
+							<label for="your_last_name">Prénom*</label>
+							<input type="text" name="subname" required>
 						</div>
 
 						<div class="form-block">
-							<label for="adress">Address*</label>
-							<input type="text" id="adress" value="Street Address" required>
+							<label for="adress">Adresse*</label>
+							<input type="text" name="address" value="15 Avenue du Maréchal Foch" required>
 						</div>
 
 
 						<div class="form-block">
 							<label for="phone">Phone*</label>
-							<input type="text" id="phone" required>
+							<input type="text" name="phone" required>
 						</div>
+
 						<div class="form-block">
-							<label for="phone">Password*</label>
-							<input type="text" id="phone" required>
+							<label for="email">Adresse mail*
+							@if(count($errors)>0)
+	                            <span class="text-left text-warning"> : 
+	                                @foreach($errors->all() as $err)
+	                                    {{ $err }}
+	                                @endforeach
+	                            </span>
+	                        @endif
+	                        </label>
+							<input type="email" name="email" required>
 						</div>
+
 						<div class="form-block">
-							<label for="phone">Re password*</label>
-							<input type="text" id="phone" required>
+							<label for="password">Mot de passe*</label>
+							<input type="password" name="password" required>
 						</div>
+
 						<div class="form-block">
-							<button type="submit" class="btn btn-primary">Register</button>
+							<button type="submit" class="btn btn-primary">Enregistrer</button>
 						</div>
 					</div>
 					<div class="col-sm-3"></div>

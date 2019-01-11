@@ -32,7 +32,7 @@
 												<span class="flash-del">{{$n->unit_price}}€</span>
 												<span class="flash-sale">{{$n->promotion_price}}€</span>
 												@else
-												<span>${{$n->unit_price}}</span>
+												<span>{{$n->unit_price}}€</span>
 												@endif
 											</p>
 										</div>

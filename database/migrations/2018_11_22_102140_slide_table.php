@@ -15,7 +15,7 @@ class SlideTable extends Migration
     {
         Schema::create('slide', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('link');
+            $table->string('name');
             $table->string('image');
         });
     }

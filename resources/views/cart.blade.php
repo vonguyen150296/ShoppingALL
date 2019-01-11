@@ -39,11 +39,11 @@
 							</td>
 
 							<td class="product-price">
-								<p class="amount"><i class="fas fa-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;{{$p['qty']}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="fas fa-minus"></i> </p>
+								<p class="amount"><a href="{{route('add-to-cart',$p['item']['id'])}}"><i class="fas fa-plus"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;{{$p['qty']}}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{route('delete-by-one',$p['item']['id'])}}"><i class="fas fa-minus"></i></a> </p>
 							</td>
 
 							<td class="product-remove">
-								<a href="#" class="remove" title="Remove this item"><i class="fa fa-trash-o"></i></a>
+								<a href="{{route('delete-item',$p['item']['id'])}}" class="remove" title="Remove this item"><i class="far fa-trash-alt"></i></a>
 							</td>
 						</tr>
 						@endforeach
@@ -56,13 +56,8 @@
 					<tfoot>
 						<tr>
 							<td colspan="6" class="actions">
-
-								<div class="coupon">
-									<label for="coupon_code">Coupon</label> 
-									<input type="text" name="coupon_code" value="" placeholder="Coupon code"> 
-									<button type="submit" class="beta-btn primary" name="apply_coupon">Apply Coupon <i class="fa fa-chevron-right"></i></button>
-								</div>
-								<button type="submit" class="beta-btn primary" name="proceed">Paiement <i class="fa fa-chevron-right"></i></button>
+								<div id="notification" class="text-success"></div>
+								<button type="submit" class="beta-btn primary" name="proceed"><a href="{{route('payment')}}"> Paiement <i class="fa fa-chevron-right"></i></a></button>
 							</td>
 						</tr>
 					</tfoot>
