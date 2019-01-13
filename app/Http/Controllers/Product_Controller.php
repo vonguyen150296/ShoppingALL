@@ -74,13 +74,15 @@ class Product_Controller extends Controller
         if(!empty($code)){
             $oldCart = Session('cart')?Session::get('cart'):null;
             $cart = new Cart($oldCart);
-            $cart->coupon($code->value);
-            Session::put('cart',$cart);
-            $value = ($code->value)*100;
-            $noti = "Code bon, vous obtenez ".$value."% de réduction";
+            $value = $code->value;
+            $noti = "Code bon, vous obtenez ".$value."€ de réduction";
+            $data['noti'] = $noti;
+            $data['value'] = $value;
         }else{
             $noti = "Code n'est pas correct!";
+            $data['noti'] = $noti;
+            $data['value'] = 0;
         }
-        return $noti;
+        return $data;
     } 
 }

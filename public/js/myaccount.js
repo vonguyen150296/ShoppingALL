@@ -71,6 +71,12 @@ app.controller('purchases', function($scope, $http){
 			$scope.purchases = response.data;
 		});
 	};
+
+	//function payment
+	$scope.payment = function(){
+		var host = window.location.origin;
+		window.location.href = host + '/ShoppingALL/public/payment';
+	}
 });
 
 //page payment

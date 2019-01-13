@@ -25,7 +25,7 @@
 <div class="row" ng-if="purchases.product_cart != ''">
 	<div class="col-sm-4"></div>
 	<div class="col-sm-4">
-		<button class="btn btn-info form-control">Paiment</button>
+		<button class="btn btn-info form-control" ng-click="payment()">Paiment</button>
 	</div>
 </div>
 </div>

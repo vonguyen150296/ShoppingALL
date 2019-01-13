@@ -10,7 +10,7 @@
 </head>
 <body>
 @include('admin.layouts.head')
-<div class="row mt-5 mb-5">
+<div class="row mt-5 mb-5" style="min-height: 500px;">
 <div class="col-sm-4 offset-sm-4 mb-5 mt-5">
 	<div class="content-title">Se connecter</div>
 		@if(isset($error) == true)<span class="text-warning">{{$error}}</span>@endif

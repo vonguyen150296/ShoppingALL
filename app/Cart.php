@@ -73,9 +73,4 @@ class Cart
 		$this->totalPrice -= $this->items[$id]['price'];
 		unset($this->items[$id]);
 	}
-
-	//coupon
-	public function coupon($value){
-		$this->totalPrice = $this->totalPrice*(1-$value);
-	}
 }

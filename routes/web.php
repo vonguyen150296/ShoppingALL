@@ -24,7 +24,7 @@ Route::get('/signup', 'Welcome_Controller@signup')->name('signup');
 Route::post('/signup', 'Welcome_Controller@post_signup')->name('post-signup');
 Route::get('/logout', 'Welcome_Controller@logout')->name('logout');
 Route::get('/payment', 'Welcome_Controller@payment')->name('payment');
-
+Route::post('/payment', 'Welcome_Controller@post_payment')->name('post_payment');
 
 
 // Product_Controller

@@ -4,11 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Products_Model;
-use App\User;
 use App\Http\Requests\Register_Request;
+use App\Carte_Credit_Model;
+use App\Bill_Detail_Model;
+use App\Customers_Model;
+use App\Products_Model;
+use App\Bills_Model;
+use App\User;
+use App\Cart;
+use Session;
 use Mail;
-
 
 class Welcome_Controller extends Controller
 {
@@ -28,7 +33,63 @@ class Welcome_Controller extends Controller
     }
 
     public function payment(){
-        return view('pay');
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+        $totalPrice = $cart->totalPrice;
+        return view('pay', compact('totalPrice'));
+    }
+
+    public function post_payment(){
+        $Cart = Session::get('cart');
+
+        //stocker customer 
+        $cus = new Customers_Model();
+        $cus->name = Auth::user()->name;
+        $cus->subname = Auth::user()->subname;
+        $cus->email = Auth::user()->email;
+        $cus->address = Auth::user()->address;
+        $cus->phone = Auth::user()->phone;
+        $cus->save(); 
+
+        //stocker in bill
+        $bill = new Bills_Model();
+        $bill->id_customer =  $cus->id;
+        $bill->date_order = date("Y-m-d");
+        $bill->total = $Cart->totalPrice;
+        $fullname = Carte_Credit_Model::where('id_user', Auth::user()->id)->select('fullname')->get()->first();
+        if($fullname){
+            $bill->payment = $fullname;
+        }else{
+            $bill->payment = Auth::user()->name." ".Auth::user()->subname;
+        }
+        
+        $bill->note = 'bien payé';
+        $bill->save();
+
+        //stocker bill_detail
+        $products = $Cart->items;
+        $detail = new Bill_Detail_Model();
+        foreach ($products as $value) {
+            $detail->id_bill = $bill->id;
+            $detail->id_product = $value['item']['id'];
+            $detail->quantity = $value['qty'];
+            if($value['item']['promotion_price']){
+                $detail->unit_price = $value['item']['promotion_price'];
+            }else{
+                 $detail->unit_price = $value['item']['unit_price'];
+            }
+            
+            $detail->save();
+        }
+        //reset Cart
+        foreach ($products as $value) {
+            unset($Cart->items[$value['item']['id']]);  
+        }
+        $Cart->totalQty= 0;
+        $Cart->totalPrice = 0;
+
+        return redirect()->route('home');
+        
     }
 
     public function post_contact(Request $req){
